@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.root.testapplicationo.calltest.CallActivity">
+<Button
+    android:id="@+id/pick_call"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:text="cal: 123"
+    />
+    <Button
+       android:id="@+id/callss"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="cal: 123"
+        />
+</LinearLayout>

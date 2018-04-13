@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="asrServers" />
+    <string-array name="logServers" />
+    <string-array name="servicesServers" />
+
+        <string-array name="dogs_list">
+            <item>Bichon Frise</item>
+            <item>Border Collie</item>
+            <item>Border Terrier</item>
+            <item>Boxer</item>
+            <item>Chihuahua</item>
+            <item>German Shepherd</item>
+            <item>Golden Retriever</item>
+            <item>Greyhound</item>
+        </string-array>
+
+</resources>

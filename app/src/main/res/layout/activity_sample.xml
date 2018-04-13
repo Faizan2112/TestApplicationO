@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+<Button
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:text="@string/order_date"
+    />
+    <view
+        class = "com.example.root.testapplicationo.ownview.ServerPreference"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:dialogTitle="ASR/VVS Server"
+        android:entries="@array/asrServers"
+        android:entryValues="@array/asrServers"
+        android:key="SERVER_NAME"
+        android:negativeButtonText="Cancel"
+        android:persistent="true"
+        android:positiveButtonText="OK"
+        android:title="ASR/VVS Server" />
+</LinearLayout>
