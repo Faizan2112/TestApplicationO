@@ -61,7 +61,7 @@ public class HashLenthAdapter extends ArrayAdapter<HashMap<String,Length>> {
 
             }*/
             HashMap<String, Length> data = objects.get(position);
-            String val = data.get(""+position).getLabel();
+            String val = data.get("name").getLabel();
 
             // TextView adapterPhone = (TextView) row.findViewById(R.id.adapterPhone);
             adapterName.setText(val);

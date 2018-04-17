@@ -23,10 +23,10 @@ public class CustomAutoCompleteTextViews extends AutoCompleteTextView {
     @Override
     protected CharSequence convertSelectionToString(Object selectedItem) {
         /** Each item in the autocompetetextview suggestion list is a hashmap object */
-        ArrayList<HashMap<String,Length>> hs = new ArrayList<HashMap<String, Length>>();
+       // ArrayList<HashMap<String,Length>> hs = new ArrayList<HashMap<String, Length>>();
         HashMap<String, Length> hm = (HashMap<String, Length>) selectedItem;
-       HashMap<String, Length> pos = hs.get((Integer) selectedItem);
+      // HashMap<String, Length> pos = hs.get((Integer) selectedItem);
         // return hm.get(""+selectedItem).getLabel();
-        return hm.get(pos).getLabel();
+        return hm.get("name").getLabel();
     }
 }

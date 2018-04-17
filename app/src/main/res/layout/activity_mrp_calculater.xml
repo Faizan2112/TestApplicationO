@@ -157,7 +157,7 @@
                 android:layout_margin="@dimen/edit_box_icon_padding4"
 
                 />
-            <com.example.root.testapplicationo.custom_text_field.CustomAutoCompleteTextViews
+            <AutoCompleteTextView
                 android:id="@+id/mrp_lenth_textview"
                 android:layout_height="0dp"
                 android:layout_width="match_parent"
@@ -167,7 +167,7 @@
                 android:gravity="center"
                 android:hint="length"
                 android:textColor="@android:color/black" />
-            <com.example.root.testapplicationo.custom_text_field.CustomAutoCompleteTextViews
+              <com.example.root.testapplicationo.custom_text_field.CustomAutoCompleteTextViews
                 android:id="@+id/mrp_breadth_textview"
                 android:layout_height="0dp"
                 android:layout_width="match_parent"

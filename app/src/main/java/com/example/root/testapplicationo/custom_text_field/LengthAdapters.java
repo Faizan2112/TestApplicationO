@@ -63,6 +63,12 @@ public class LengthAdapters extends ArrayAdapter<Length> {
         return 0;
     }
 
+
+    public Length getItemId(int i,String s) {
+        return objects.get(i);
+    }
+
+
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         view = inflter.inflate(R.layout.sub_category_list_view, null);

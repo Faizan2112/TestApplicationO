@@ -68,6 +68,7 @@ public class MrpCalculaterActivity extends AppCompatActivity implements AdapterV
     private String productSpinnerValue;
     private String userId;
     private String catProductSpinnerValue;
+    private LengthAdapters lengthAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -173,6 +174,7 @@ public class MrpCalculaterActivity extends AppCompatActivity implements AdapterV
         switch (ids) {
             case R.id.home_category_spinner:
                 String categorySpinnerValue = mCategoryModels.get(position).getmCategoryId();
+
                 if (mSubCategoryModels != null) {
                     mSubCategoryModels.clear();
 
@@ -210,9 +212,15 @@ public class MrpCalculaterActivity extends AppCompatActivity implements AdapterV
                 }
             case R.id.mrp_lenth_textview:
                 if (mLength != null) {
-                    lent = mHLengths.get(position).get("name").getLabel().toString();
+                    Length freindPOJO= lengthAdapter
+                            .getItem(position);
+                    String friends_id = freindPOJO.getValue();
+                    /*String items = lengthAdapter.getSele
+                    int pso = lengthAdapter.getPosition();*/
+                    mLenTv.setSelection(Integer.parseInt(friends_id));
+                   // lent = mHLengths.get(position).get("name").getLabel().toString();
                     //lentSize = mLengths.get(position).getLabel().toString();
-                    mLenTv.setText(lent);
+                    mLenTv.setText(friends_id);
 
                 }
 
@@ -292,7 +300,7 @@ public class MrpCalculaterActivity extends AppCompatActivity implements AdapterV
                     JSONObject jsonSub = categaryArray.getJSONObject(i);
                     String value = jsonSub.getString(Constants.MAT_VALUE);
                     String label = jsonSub.getString(Constants.MAT_LABEL);
-                   length = new Length(value, label);
+                    length = new Length(value, label);
                     mLengths.add(length);
 
                   //  stringLengthHashMap.put("name", length);
@@ -300,7 +308,7 @@ public class MrpCalculaterActivity extends AppCompatActivity implements AdapterV
                 }
 
 
-                LengthAdapters lengthAdapter = new LengthAdapters(getApplicationContext(),layoutItemId, mLengths);
+                 lengthAdapter = new LengthAdapters(getApplicationContext(),layoutItemId, mLengths);
              //   SupplierSuggestionAdapter supplierSuggestionAdapter = new SupplierSuggestionAdapter(MrpCalculaterActivity.this, R.layout.row_dog, mHLengths);
              // HashLenthAdapter hashLenthAdapter = new HashLenthAdapter(getApplicationContext(),layoutItemId,mHLengths);
               mLenTv.setAdapter(lengthAdapter);

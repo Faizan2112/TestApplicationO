@@ -55,6 +55,8 @@ public class LengthAdapter extends BaseAdapter implements Filterable {
         return view;
     }
 
+
+
     @Override
     public Filter getFilter() {
         return null;

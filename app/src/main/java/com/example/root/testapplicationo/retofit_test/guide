@@ -1,0 +1,87 @@
+
+1) Events from your activity are passed onto the viewmodel
+    viewModel.getPosts()
+
+2) The viewmodel relays the events to the repository
+fun getPosts() {
+    if (postsOutcome.value == null)
+        repo.fetchPosts(compositeDisposable)
+}
+
+3)The repository create a PublishSubject for the Outcome class
+val outcome: PublishSubject.create<Outcome<List<PostWithUser>>>()
+
+
+4)The repository starts observing the contents of the local database, pushes it to the
+publishSubject.success(data) and pings the server the first time to fetch remote update.
+fun fetchPosts(compositeDisposable: CompositeDisposable) {
+    postFetchOutcome.loading(true)
+    //Observe changes to the db
+    compositeDisposable.add(postDb.postDao().getAll()
+            .performOnBackOutOnMain()
+            .subscribe({ retailers ->
+                postFetchOutcome.success(retailers)
+                if (remoteFetch)
+                    refreshPosts(compositeDisposable)
+                remoteFetch = false
+            }, { error -> handleError(error) })
+    )
+}
+
+5)   The remote sync on success, saves to the internal db. This triggers the publishSubject.success(data).
+On error, the error from the server is converted to an exception and pushed to the publishSubject.Error(exception)
+
+fun refreshPosts(compositeDisposable: CompositeDisposable) {
+    postFetchOutcome.loading(true)
+    compositeDisposable.add(
+            Flowable.zip(
+                    postService.getUsers(),
+                    postService.getPosts(),
+                    BiFunction<List<User>, List<Post>, Unit> { t1, t2 -> saveUsersAndPosts(t1, t2) }
+            )
+                    .performOnBackOutOnMain()
+                    .subscribe({}, { error -> handleError(error) }))
+}
+
+6)   The viewmodel has a LiveData object observing the publishSubject of the repository
+val postsOutcome: LiveData<Outcome<List<Post>>> by lazy {
+    //Convert publishSubject to livedata
+    repo.postFetchOutcome.toLiveData(compositeDisposable)
+}
+
+7)    The activity is observing the viewmodel’s LiveData object and updates the screen contents accordingly
+
+     viewModel.postsOutcome.observe(this, Observer<Outcome<List<Post>>> { outcome ->
+        when (outcome) {
+
+            is Outcome.Progress -> srlPosts.isRefreshing = outcome.loading
+
+            is Outcome.Success -> {
+                Toast.makeText(context, "Success!", Toast.LENGTH_LONG).show()
+                adapter.setData(outcome.data)
+            }
+
+            is Outcome.Failure -> {
+                if (outcome.e is IOException)
+                    Toast.makeText(context, R.string.need_internet_posts, Toast.LENGTH_LONG).show()
+                else
+                    Toast.makeText(context, R.string.failed_post_try_again, Toast.LENGTH_LONG).show()
+            }
+
+        }
+})
+
+
+///////////////////////////////////////////////////////////
+Probably, we can see the structure better with an example:
+
+    The user taps a button because he wants to register.
+    The Fragment tells the ViewModel (VM) that the button has been tapped (and probably, it shows a loading dialog animation saying we’re processing the request).
+    The VM handles what it has to be done. In this case, because the user wants to register into the app, it tells the UserAuthenticationRequestManager (RM) to register.
+    The RM prepares the data (which is passed from the VM or it gets it from a RegistrationModel, for example) and talks with the RegistrationAPIService to register the user with that data.
+    The RegistrationAPIService makes the request (also handles the error just in case something went wrong) and when it receives the response, it processes the information (for example, storing it somewhere). After that, it communicates to the RM that everything was OK and the user is registered.
+    Then, the RM gets the confirmation that registration was successful. Oh wait, but we also have to log the user in (because of our requirements)! Then, the RM prepares the Login data to make the request. When it’s prepared, it communicates with the LoginAPIService.
+    The LoginAPIService makes the request and does everything the RegistrationAPIService did before (handling errors, applying the logic, parsing the data, etc). Again it tells the RM that the request was successful.
+    The RM has nothing else to do, so it can tell the ViewModel and the ViewModel to the View that the user is registered and logged in.
+    Now, the Fragment reacts according the response it got.
+

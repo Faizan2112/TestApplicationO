@@ -5,7 +5,7 @@ import android.support.annotation.NonNull;
 /**
  * Created by root on 3/16/18.
  */
-
+// kotlin sealed classes
 public class UserAuthenticationState<T> {
     public enum Status {SUCCESS, ERROR, LOADING}
 
@@ -45,3 +45,19 @@ public class UserAuthenticationState<T> {
     }
 
 }
+
+/*
+* sealed class Outcome<T> {
+    data class Progress<T>(var loading: Boolean) : Outcome<T>()
+    data class Success<T>(var data: T) : Outcome<T>()
+    data class Failure<T>(val e: Throwable) : Outcome<T>()
+
+    companion object {
+        fun <T> loading(isLoading: Boolean): Outcome<T> = Progress(isLoading)
+
+        fun <T> success(data: T): Outcome<T> = Success(data)
+
+        fun <T> failure(e: Throwable): Outcome<T> = Failure(e)
+    }
+}
+* */
