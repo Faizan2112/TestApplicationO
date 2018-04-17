@@ -39,7 +39,7 @@ import java.util.Map;
 
 public class MrpCalculaterActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnTouchListener {
     Spinner mCategorySpinner, mSubCategorySpinner, mCatProductSpinner, mLength, mWidth, mHeight, mColor;
-    // AutoCompleteTextView mLenTv,mHeiTv,mWidTv;
+     AutoCompleteTextView mLenTv;
     private String lent, widt, hei, color;
     private String lentSize, widtSize, heiSize, colorSize;
     private boolean isHeightSpinnerTouched = false;
@@ -47,8 +47,7 @@ public class MrpCalculaterActivity extends AppCompatActivity implements AdapterV
     TextView mPrice;
     EditText mQuantity;
     private Toolbar mToolbar;
-    private CustomAutoCompleteTextViews mLenTv, mHeiTv, mWidTv;
-    ;
+    private CustomAutoCompleteTextViews  mHeiTv, mWidTv;
 
     ArrayList<CategoryModel> mCategoryModels;
     ArrayList<SubCategoryModel> mSubCategoryModels;
@@ -294,17 +293,17 @@ public class MrpCalculaterActivity extends AppCompatActivity implements AdapterV
                     String value = jsonSub.getString(Constants.MAT_VALUE);
                     String label = jsonSub.getString(Constants.MAT_LABEL);
                    length = new Length(value, label);
-                    //  mLengths.add(length);
+                    mLengths.add(length);
 
-                    stringLengthHashMap.put(""+i, length);
-                    mHLengths.add(stringLengthHashMap);
+                  //  stringLengthHashMap.put("name", length);
+                   // mHLengths.add(stringLengthHashMap);
                 }
 
 
-               // LengthAdapter lengthAdapter = new LengthAdapter(getApplicationContext(), mLengths);
+                LengthAdapters lengthAdapter = new LengthAdapters(getApplicationContext(),layoutItemId, mLengths);
              //   SupplierSuggestionAdapter supplierSuggestionAdapter = new SupplierSuggestionAdapter(MrpCalculaterActivity.this, R.layout.row_dog, mHLengths);
-              HashLenthAdapter hashLenthAdapter = new HashLenthAdapter(getApplicationContext(),layoutItemId,mHLengths);
-             mLenTv.setAdapter(hashLenthAdapter);
+             // HashLenthAdapter hashLenthAdapter = new HashLenthAdapter(getApplicationContext(),layoutItemId,mHLengths);
+              mLenTv.setAdapter(lengthAdapter);
                 //   mLenTv.setThreshold(1);
              //   mLenTv.setAdapter(lengthAdapter);
             }
