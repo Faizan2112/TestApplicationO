@@ -19,19 +19,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity" />
-        <activity android:name=".customspinner.MainActivity" />
         <activity android:name=".barcode_scanner.BarCodeActivity" />
         <activity android:name=".sticky_header.SectionRecViewActivity" />
         <activity android:name=".mvvmtest.DemoMvvm" />
-        <activity android:name=".retofit_test.view.activity.NewLoginActivity" />
-        <activity android:name=".custom_text_field.MrpCalculaterActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <activity android:name=".retofit_test.view.activity.NewLoginActivity">
 
         </activity>
+        <activity android:name=".custom_text_field.MrpCalculaterActivity"></activity>
 
         <service android:name=".firebasetest.MyFirebaseInstanceIdService">
             <intent-filter>
@@ -49,12 +43,23 @@
             android:label="@string/title_activity_custom_text_input_layout"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ownview.SampleActivity" />
-        <activity android:name=".bottomlayoutbehaviour.LayoutBehaviour"></activity>
-        <activity android:name=".autodropdown.SimpleAutoCompleteTextView">
+        <activity android:name=".bottomlayoutbehaviour.LayoutBehaviour" />
+        <activity android:name=".autodropdown.SimpleAutoCompleteTextView" />
+        <activity android:name=".newautodropdown.NewDropDownActivity" />
+        <activity android:name=".databindingtest.DataBindTestActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
-        <activity android:name=".newautodropdown.NewDropDownActivity">
+        <activity android:name=".retrotest.RetroTest">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
     </application>

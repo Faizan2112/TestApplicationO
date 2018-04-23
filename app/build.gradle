@@ -16,6 +16,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    dataBinding
+            {
+                enabled = true        
+            }
+
 }
 
 dependencies {
@@ -53,8 +58,16 @@ dependencies {
     //fire base
     compile 'com.google.firebase:firebase-core:11.8.0'
     compile 'com.google.firebase:firebase-messaging:11.8.0'
-    //compile 'com.timehop.stickyheadersrecyclerview:library:0.4.3'
-    // Toast
+
+    // rx java
+
+    compile 'io.reactivex:rxandroid:0.25.0'
+    /////////////
+
+//compile 'com.timehop.stickyheadersrecyclerview:library:0.4.3'
+
+
+// Toast
 
 
 
