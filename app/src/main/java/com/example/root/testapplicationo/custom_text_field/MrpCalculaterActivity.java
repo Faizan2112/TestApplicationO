@@ -3,6 +3,8 @@ package com.example.root.testapplicationo.custom_text_field;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -22,6 +24,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.root.testapplicationo.R;
+import com.example.root.testapplicationo.anewhome.BaseActivity;
 import com.example.root.testapplicationo.autodropdown.SimpleAutoCompleteTextView;
 import com.example.root.testapplicationo.autodropdown.SupplierSuggestionAdapter;
 import com.example.root.testapplicationo.newautodropdown.CustomAutoCompleteTextView;
@@ -32,14 +35,15 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 
-public class MrpCalculaterActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnTouchListener {
+public class MrpCalculaterActivity extends BaseActivity implements AdapterView.OnItemSelectedListener, View.OnTouchListener {
     Spinner mCategorySpinner, mSubCategorySpinner, mCatProductSpinner, mLength, mWidth, mHeight, mColor;
-     AutoCompleteTextView mLenTv;
+     AutoCompleteTextView mLenTv , mHeiTv, mWidTv;
     private String lent, widt, hei, color;
     private String lentSize, widtSize, heiSize, colorSize;
     private boolean isHeightSpinnerTouched = false;
@@ -47,14 +51,16 @@ public class MrpCalculaterActivity extends AppCompatActivity implements AdapterV
     TextView mPrice;
     EditText mQuantity;
     private Toolbar mToolbar;
-    private CustomAutoCompleteTextViews  mHeiTv, mWidTv;
+   // private CustomAutoCompleteTextViews
 
     ArrayList<CategoryModel> mCategoryModels;
     ArrayList<SubCategoryModel> mSubCategoryModels;
     ArrayList<ProductModel> mProductModels;
     ArrayList<Length> mLengths;
-    ArrayList<Width> mWidths;
-    ArrayList<Height> mHeights;
+   // ArrayList<Width> mWidths;
+    ArrayList<Length> mWidths;
+    //ArrayList<Height> mHeights;
+    ArrayList<Length> mHeights;
     ArrayList<ColorModel> mColors;
     ArrayList<HashMap<String, Length>> mHLengths;
     ArrayList<HashMap<String, Width>> mHWidths;
@@ -156,11 +162,118 @@ public class MrpCalculaterActivity extends AppCompatActivity implements AdapterV
         mCategorySpinner.setOnItemSelectedListener(this);
         mSubCategorySpinner.setOnItemSelectedListener(this);
         mCatProductSpinner.setOnItemSelectedListener(this);
+        mWidTv.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                try{
+                    int val = Integer.parseInt(String.valueOf(charSequence));
+
+                    if(charSequence.length() > 0  && charSequence.length() <= 2  ) {
+                        if (val <= 30 || val >= 45) {
+                            Toast.makeText(getApplicationContext(), "Size must be between 73 to 90", Toast.LENGTH_LONG).show();
+
+
+                        }
+                    }
+                    else if(mWidths != null )
+                    {
+                   //     Width wid = ;
+
+
+                    }
+
+                }catch (Exception e){Toast.makeText(getApplicationContext(),"Enter number",Toast.LENGTH_SHORT).show();};
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        mHeiTv.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                try{
+                    int val = Integer.parseInt(String.valueOf(charSequence));
+
+                    if(charSequence.length() > 0  && charSequence.length() <= 2  ) {
+                        if (val <= 4 || val >= 10) {
+                            Toast.makeText(getApplicationContext(), "Size must be between 73 to 90", Toast.LENGTH_LONG).show();
+
+
+                        }
+                    }
+
+                }catch (Exception e){Toast.makeText(getApplicationContext(),"Enter number",Toast.LENGTH_SHORT).show();};
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
         mLenTv.setOnTouchListener(this);
+        mLenTv.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                try{
+                    int val = Integer.parseInt(String.valueOf(charSequence));
+
+                    if(charSequence.length() > 0  && charSequence.length() <= 2  ) {
+                        if (val <= 73 || val >= 90) {
+                            Toast.makeText(getApplicationContext(), "Size must be between 73 to 90", Toast.LENGTH_LONG).show();
+
+
+                        }
+                        else
+                            {
+                                /*Collections.sort();
+
+                                int target = 4;
+                                int nearest = 0;
+
+                                for (int i : ints)
+                                {
+                                    if (i <= target) {
+                                        nearest = i;
+                                    }
+                                }
+                                */
+                            }
+                    }
+
+                }catch (Exception e){Toast.makeText(getApplicationContext(),"Enter number",Toast.LENGTH_SHORT).show();};
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+
+        });
+        mWidTv.setOnTouchListener(this);
         mHeiTv.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
+                mHeiTv.showDropDown();
                 isHeightSpinnerTouched = true;
                 return false;
             }
@@ -212,29 +325,33 @@ public class MrpCalculaterActivity extends AppCompatActivity implements AdapterV
                 }
             case R.id.mrp_lenth_textview:
                 if (mLength != null) {
-                    Length freindPOJO= lengthAdapter
+                    Length selected = (Length) adapterView.getAdapter().getItem(position);
+                    Toast.makeText(MrpCalculaterActivity.this,
+                            "Clicked " + position + " name: " + selected.getLabel(),
+                            Toast.LENGTH_SHORT).show();
+
+                    /* Length freindPOJO= lengthAdapter
                             .getItem(position);
                     String friends_id = freindPOJO.getValue();
-                    /*String items = lengthAdapter.getSele
+                   */ /*String items = lengthAdapter.getSele
                     int pso = lengthAdapter.getPosition();*/
-                    mLenTv.setSelection(Integer.parseInt(friends_id));
+                    //mLenTv.setSelection(Integer.parseInt(friends_id));
                    // lent = mHLengths.get(position).get("name").getLabel().toString();
                     //lentSize = mLengths.get(position).getLabel().toString();
-                    mLenTv.setText(friends_id);
+                   // mLenTv.setText(friends_id);
 
                 }
 
                 break;
             case R.id.mrp_height_textview:
-                if (mLengths != null && mWidths != null && isHeightSpinnerTouched == true) {
-
-                    hei = mHeights.get(position).getValue().toString();
-                    heiSize = mHeights.get(position).getLabel().toString();
-                    fetchColorAndPrice(lent, widt, hei);
-                }
+               performAction(adapterView,position);
                 break;
             case R.id.mrp_breadth_textview:
                 if (mLength != null) {
+                    Length selected = (Length) adapterView.getAdapter().getItem(position);
+                    Toast.makeText(MrpCalculaterActivity.this,
+                            "Clicked " + position + " name: " + selected.getLabel(),
+                            Toast.LENGTH_SHORT).show();
                     widt = mWidths.get(position).getValue().toString();
                     widtSize = mWidths.get(position).getLabel().toString();
 
@@ -243,6 +360,21 @@ public class MrpCalculaterActivity extends AppCompatActivity implements AdapterV
         }
 
     }
+
+    private void performAction(AdapterView<?> adapterView, int position) {
+        if (mLengths != null && mWidths != null && isHeightSpinnerTouched == true) {
+            Length selected = (Length) adapterView.getAdapter().getItem(position);
+            Toast.makeText(MrpCalculaterActivity.this,
+                    "Clicked " + position + " name: " + selected.getLabel(),
+                    Toast.LENGTH_SHORT).show();
+            hei = mHeights.get(position).getValue().toString();
+            heiSize = mHeights.get(position).getLabel().toString();
+
+            fetchColorAndPrice(lent, widt, hei);
+        }
+    }
+
+
 
     private void fillDimentionSpinners(final String fetchDimentionByValue) {
         final StringRequest fetchMatDimention = new StringRequest(Request.Method.POST, UrlConstants.FRESH_UP_SPINNER_LXWXH, new Response.Listener<String>() {
@@ -312,7 +444,7 @@ public class MrpCalculaterActivity extends AppCompatActivity implements AdapterV
              //   SupplierSuggestionAdapter supplierSuggestionAdapter = new SupplierSuggestionAdapter(MrpCalculaterActivity.this, R.layout.row_dog, mHLengths);
              // HashLenthAdapter hashLenthAdapter = new HashLenthAdapter(getApplicationContext(),layoutItemId,mHLengths);
               mLenTv.setAdapter(lengthAdapter);
-                //   mLenTv.setThreshold(1);
+                   mLenTv.setThreshold(-1);
              //   mLenTv.setAdapter(lengthAdapter);
             }
             if (categoryObject.has(Constants.FRESH_UP_MAT_DIMENTION_WIDTH)) {
@@ -322,12 +454,17 @@ public class MrpCalculaterActivity extends AppCompatActivity implements AdapterV
                     JSONObject jsonSub = categaryArray.getJSONObject(i);
                     String value = jsonSub.getString(Constants.MAT_VALUE);
                     String label = jsonSub.getString(Constants.MAT_LABEL);
-                    Width width = new Width(value, label);
+                    Length width = new Length(value, label);
                     mWidths.add(width);
                 }
-                WidthAdapter widthAdapter = new WidthAdapter(getApplicationContext(), mWidths);
+                lengthAdapter = new LengthAdapters(getApplicationContext(),layoutItemId, mWidths);
+                //   SupplierSuggestionAdapter supplierSuggestionAdapter = new SupplierSuggestionAdapter(MrpCalculaterActivity.this, R.layout.row_dog, mHLengths);
+                // HashLenthAdapter hashLenthAdapter = new HashLenthAdapter(getApplicationContext(),layoutItemId,mHLengths);
+                mWidTv.setAdapter(lengthAdapter);
+                mWidTv.setThreshold(-1);
+               /* WidthAdapter widthAdapter = new WidthAdapter(getApplicationContext(), mWidths);
                 mWidTv.setThreshold(1);
-                mWidTv.setAdapter(widthAdapter);
+                mWidTv.setAdapter(widthAdapter);*/
 
 
             }
@@ -338,13 +475,18 @@ public class MrpCalculaterActivity extends AppCompatActivity implements AdapterV
                     JSONObject jsonSub = categaryArray.getJSONObject(i);
                     String value = jsonSub.getString(Constants.MAT_VALUE);
                     String label = jsonSub.getString(Constants.MAT_LABEL);
-                    Height height = new Height(value, label);
+                    Length height = new Length(value, label);
                     mHeights.add(height);
                 }
-                HeightAdapter heightAdapter = new HeightAdapter(getApplicationContext(), mHeights);
+                lengthAdapter = new LengthAdapters(getApplicationContext(),layoutItemId, mHeights);
+                //   SupplierSuggestionAdapter supplierSuggestionAdapter = new SupplierSuggestionAdapter(MrpCalculaterActivity.this, R.layout.row_dog, mHLengths);
+                // HashLenthAdapter hashLenthAdapter = new HashLenthAdapter(getApplicationContext(),layoutItemId,mHLengths);
+                mHeiTv.setAdapter(lengthAdapter);
+                mHeiTv.setThreshold(-1);
+               /* HeightAdapter heightAdapter = new HeightAdapter(getApplicationContext(), mHeights);
                 mHeiTv.setThreshold(1);
                 mHeiTv.setAdapter(heightAdapter);
-
+*/
             }
 
         }
@@ -557,15 +699,16 @@ public class MrpCalculaterActivity extends AppCompatActivity implements AdapterV
     public boolean onTouch(View view, MotionEvent motionEvent) {
         switch (view.getId()) {
             case R.id.mrp_lenth_textview:
-                mLenTv.setThreshold(0);
+              //  mLenTv.setThreshold(-1);
+
                 mLenTv.showDropDown();
                 break;
-            case R.id.mrp_height_textview:
-                mHeiTv.setThreshold(0);
+            /*case R.id.mrp_height_textview:
+            //    mHeiTv.setThreshold(-1);
                 mHeiTv.showDropDown();
-                break;
+                break;*/
             case R.id.mrp_breadth_textview:
-                mWidTv.setThreshold(0);
+             //   mWidTv.setThreshold(-1);
                 mWidTv.showDropDown();
                 break;
 

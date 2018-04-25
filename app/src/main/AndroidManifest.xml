@@ -25,7 +25,9 @@
         <activity android:name=".retofit_test.view.activity.NewLoginActivity">
 
         </activity>
-        <activity android:name=".custom_text_field.MrpCalculaterActivity"></activity>
+        <activity android:name=".custom_text_field.MrpCalculaterActivity">
+
+        </activity>
 
         <service android:name=".firebasetest.MyFirebaseInstanceIdService">
             <intent-filter>
@@ -46,7 +48,9 @@
         <activity android:name=".bottomlayoutbehaviour.LayoutBehaviour" />
         <activity android:name=".autodropdown.SimpleAutoCompleteTextView" />
         <activity android:name=".newautodropdown.NewDropDownActivity" />
-        <activity android:name=".databindingtest.DataBindTestActivity">
+        <activity android:name=".databindingtest.DataBindTestActivity" />
+        <activity android:name=".retrotest.RetroTest" />
+        <activity android:name=".anewhome.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -54,14 +58,7 @@
             </intent-filter>
 
         </activity>
-        <activity android:name=".retrotest.RetroTest">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-        </activity>
+        <activity android:name=".anewhome.BaseActivity"></activity>
     </application>
 
 </manifest>

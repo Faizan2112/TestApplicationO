@@ -117,7 +117,40 @@
             android:layout_weight=".7"
             android:orientation="vertical"
             android:weightSum="1">
-
+            <AutoCompleteTextView
+                android:id="@+id/mrp_lenth_textview"
+                android:layout_height="0dp"
+                android:layout_width="match_parent"
+                android:layout_weight=".11"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/spinner_bg"
+                android:gravity="center"
+                android:hint="length"
+                android:completionThreshold="-1"
+                android:textColor="@android:color/black" />
+            <AutoCompleteTextView
+                android:id="@+id/mrp_breadth_textview"
+                android:layout_height="0dp"
+                android:layout_width="match_parent"
+                android:layout_weight=".11"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/spinner_bg"
+                android:gravity="center"
+                android:completionThreshold="-1"
+                android:hint="breah"
+                android:textColor="@android:color/black" />
+            <AutoCompleteTextView
+                android:id="@+id/mrp_height_textview"
+                android:layout_height="0dp"
+                android:layout_width="match_parent"
+                android:layout_weight=".11"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/spinner_bg"
+                android:gravity="center"
+                android:completionThreshold="-1"
+                android:hint="height"
+                android:textColor="@android:color/black" />
+            />
             <Spinner
                 android:id="@+id/home_category_spinner"
                 android:layout_width="match_parent"
@@ -157,18 +190,9 @@
                 android:layout_margin="@dimen/edit_box_icon_padding4"
 
                 />
-            <AutoCompleteTextView
-                android:id="@+id/mrp_lenth_textview"
-                android:layout_height="0dp"
-                android:layout_width="match_parent"
-                android:layout_weight=".11"
-                android:layout_centerHorizontal="true"
-                android:background="@drawable/spinner_bg"
-                android:gravity="center"
-                android:hint="length"
-                android:textColor="@android:color/black" />
-              <com.example.root.testapplicationo.custom_text_field.CustomAutoCompleteTextViews
-                android:id="@+id/mrp_breadth_textview"
+
+             <!-- <com.example.root.testapplicationo.custom_text_field.CustomAutoCompleteTextViews
+                android:id="@+id/mrp_height_textview"
                 android:layout_height="0dp"
                 android:layout_width="match_parent"
                 android:layout_weight=".11"
@@ -186,7 +210,7 @@
                 android:background="@drawable/spinner_bg"
                 android:gravity="center"
                 android:hint="height"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black" />-->
 
          <!--   <LinearLayout
                 android:layout_height="0dp"

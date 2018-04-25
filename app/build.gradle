@@ -62,12 +62,7 @@ dependencies {
     // rx java
 
     compile 'io.reactivex:rxandroid:0.25.0'
-    /////////////
 
-//compile 'com.timehop.stickyheadersrecyclerview:library:0.4.3'
-
-
-// Toast
 
 
 

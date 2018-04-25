@@ -81,6 +81,7 @@
     <string name="title_activity_main">AutoCompleteTextViewDemo</string>
     <string name="str_hnt_autocomplete">Enter Country Name</string>
     <string name="hello_world">Hello world!</string>
+    <string name="menu">mais</string>
 
 
 </resources>
