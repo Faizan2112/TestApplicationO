@@ -25,7 +25,7 @@ public class LengthAdapter extends BaseAdapter implements Filterable {
     public LengthAdapter(Context applicationContext, List<Length> lengthList) {
         this.context = applicationContext;
         this.lengthList = lengthList;
-        inflter = (LayoutInflater.from(applicationContext));
+        inflter = (LayoutInflater.from(applicationContext.getApplicationContext()));
     }
 
     @Override

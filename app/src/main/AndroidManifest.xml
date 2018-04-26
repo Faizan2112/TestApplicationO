@@ -22,12 +22,8 @@
         <activity android:name=".barcode_scanner.BarCodeActivity" />
         <activity android:name=".sticky_header.SectionRecViewActivity" />
         <activity android:name=".mvvmtest.DemoMvvm" />
-        <activity android:name=".retofit_test.view.activity.NewLoginActivity">
-
-        </activity>
-        <activity android:name=".custom_text_field.MrpCalculaterActivity">
-
-        </activity>
+        <activity android:name=".retofit_test.view.activity.NewLoginActivity" />
+        <activity android:name=".custom_text_field.MrpCalculaterActivity" />
 
         <service android:name=".firebasetest.MyFirebaseInstanceIdService">
             <intent-filter>
@@ -51,6 +47,11 @@
         <activity android:name=".databindingtest.DataBindTestActivity" />
         <activity android:name=".retrotest.RetroTest" />
         <activity android:name=".anewhome.HomeActivity">
+
+        </activity>
+        <activity android:name=".anewhome.BaseActivity" />
+
+        <activity android:name=".custombase.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -58,7 +59,6 @@
             </intent-filter>
 
         </activity>
-        <activity android:name=".anewhome.BaseActivity"></activity>
     </application>
 
 </manifest>

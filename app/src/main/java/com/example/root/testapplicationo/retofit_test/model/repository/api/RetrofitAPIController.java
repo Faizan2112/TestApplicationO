@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class RetrofitAPIController {
-    private static final String BASE_URL = "http://webworldindia.com/freshup_oms/" ;
+    private static final String BASE_URL = "http://webworldindia.com/" ;
     private static final String TEST_BASE_URL = "http://demo2741469.mockable.io/";
 
     public static <T> T getRetofitApiClient(Class<T> classRef)

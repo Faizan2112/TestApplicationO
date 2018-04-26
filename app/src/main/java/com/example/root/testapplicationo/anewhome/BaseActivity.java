@@ -22,7 +22,7 @@ import java.util.Map;
 
 public class BaseActivity extends AppCompatActivity {
 
-    public DrawerLayout drawerLayout;
+    /*public DrawerLayout drawerLayout;
     public ListView drawerList;
     public String[] layers;
     Toolbar mToolbar ;
@@ -36,7 +36,7 @@ public class BaseActivity extends AppCompatActivity {
         // super.onCreateDrawer();
 
         mToolbar = findViewById(R.layout.toolbar_layout);
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+      //  drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
 
         drawerToggle = new ActionBarDrawerToggle((Activity) this, drawerLayout, mToolbar, 0, 0) {
@@ -92,5 +92,5 @@ public class BaseActivity extends AppCompatActivity {
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         drawerToggle.onConfigurationChanged(newConfig);
-    }
+    }*/
 }

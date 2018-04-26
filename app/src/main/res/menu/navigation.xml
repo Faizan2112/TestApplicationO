@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--android:icon="@drawable/ic_dns_black_24dp"-->
+    <item
+            android:id="@+id/navigation_home"
+
+            android:title="@string/title_summary"
+            />
+    <!-- android:icon="@drawable/ic_account_circle_black_24dp"-->
+
+    <item
+            android:id="@+id/navigation_dashboard"
+
+            android:title="@string/title_profile"/>
+    <!--android:icon="@drawable/ic_work_black_24dp"-->
+
+    <item
+            android:id="@+id/navigation_notifications"
+
+            android:title="@string/title_workexp"/>
+    <!--android:icon="@drawable/ic_school_black_24dp"-->
+    <item
+            android:id="@+id/navigation_education"
+
+            android:title="@string/title_education"/>
+
+</menu>

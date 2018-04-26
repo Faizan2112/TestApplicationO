@@ -19,7 +19,7 @@ import retrofit2.Response;
  */
 
 public class LoginActivityViewModel extends ViewModel {
-    private UserAuthenticationRepository mUserAuthenticationRepository ;
+    private UserAuthenticationRepository mUserAuthenticationRepository = new UserAuthenticationRepository();
     private UserLoginApiResponse mUserLoginApiResponse = new UserLoginApiResponse();
     private MutableLiveData<UserAuthenticationState> mUserAuthenticationState = new MutableLiveData<>();
     public MutableLiveData<UserAuthenticationState> subscribeForUserLoginByNumber() {
@@ -41,6 +41,7 @@ public class LoginActivityViewModel extends ViewModel {
                  mUserAuthenticationState.postValue(UserAuthenticationState.error(new Exception(t)));
                  Log.i("RESPONSE", "" + t.toString());
              }
-         }, mobileNumber); }
+         }, mobileNumber);
+    }
     }
 

@@ -59,9 +59,10 @@ dependencies {
     compile 'com.google.firebase:firebase-core:11.8.0'
     compile 'com.google.firebase:firebase-messaging:11.8.0'
 
-    // rx java
+    //
 
-    compile 'io.reactivex:rxandroid:0.25.0'
+
+
 
 
 

@@ -1,10 +1,16 @@
 package com.example.root.testapplicationo.anewhome;
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProvider;
+import android.arch.lifecycle.ViewModelProviders;
+import android.content.Context;
 import android.databinding.DataBindingUtil;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,9 +21,12 @@ import android.widget.Toast;
 import com.example.root.testapplicationo.R;
 import com.example.root.testapplicationo.databinding.ActivityHomeBinding;
 import com.example.root.testapplicationo.retofit_test.viewmodels.LoginActivityViewModel;
+import com.example.root.testapplicationo.retofit_test.viewmodels.viewmodelstate.UserAuthenticationState;
 
 public class HomeActivity extends AppCompatActivity implements View.OnTouchListener, AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener {
+    Context mContext ;
     ActivityHomeBinding mActivityHomeBinding ;
+    HomeActivityViewModel mHomeActivityViewModel ;
 
     private LoginActivityViewModel mLoginActivityViewModel;
     @Override
@@ -25,10 +34,29 @@ public class HomeActivity extends AppCompatActivity implements View.OnTouchListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         mActivityHomeBinding = DataBindingUtil.setContentView(this,R.layout.activity_home);
+        mHomeActivityViewModel = ViewModelProviders.of(HomeActivity.this).get(HomeActivityViewModel.class);
         initView();
+
         itemClickListners();
+        subscribeFor();
+        mHomeActivityViewModel.setCategorySpinner(mActivityHomeBinding.homeCategorySpinner,mContext);
 
     }
+
+    private void subscribeFor() {
+        mHomeActivityViewModel.subcribeForCategorySpinner().observe(this, new Observer<UserAuthenticationState>() {
+            @Override
+            public void onChanged(@Nullable UserAuthenticationState userAuthenticationState) {
+                if (userAuthenticationState.getStatus() == UserAuthenticationState.Status.SUCCESS) {
+                  //  Log.i("Response In View", "" + userAuthenticationState.getUserData().toString());
+                    Toast.makeText(getApplicationContext(),"cat spinner toched",Toast.LENGTH_LONG);
+
+                }
+            }
+        });
+    }
+
+
 
     private void itemClickListners() {
         //upper spinner cat
@@ -141,6 +169,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnTouchListe
         {
             case 1 :
                 Toast.makeText(getApplicationContext(),"cat spinner toched",Toast.LENGTH_LONG);
+             // mHomeActivityViewModel.setCategorySpinner();
                 break ;
 
             case 2 :
