@@ -46,19 +46,39 @@
         <activity android:name=".newautodropdown.NewDropDownActivity" />
         <activity android:name=".databindingtest.DataBindTestActivity" />
         <activity android:name=".retrotest.RetroTest" />
-        <activity android:name=".anewhome.HomeActivity">
-
-        </activity>
+        <activity android:name=".anewhome.HomeActivity" />
         <activity android:name=".anewhome.BaseActivity" />
-
         <activity android:name=".custombase.MainActivity">
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="www.android2.in"
+                    android:path="/vivekchoudhary"
+                    android:scheme="http" />
+            </intent-filter>
+            -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
+        <activity android:name=".dbrxmvvm.RxtestActivity" />
+        <activity android:name=".caller.CalllerActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".mvvmtestnew.views.activities.MVVMTestActivity" />
+        <activity android:name=".custombase.BaseBackBtnToolbarAcitvity"></activity>
     </application>
 
 </manifest>

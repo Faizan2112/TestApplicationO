@@ -19,14 +19,19 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.root.testapplicationo.R;
+import com.example.root.testapplicationo.custom_text_field.Length;
+import com.example.root.testapplicationo.custom_text_field.LengthAdapter;
 import com.example.root.testapplicationo.databinding.ActivityHomeBinding;
 import com.example.root.testapplicationo.retofit_test.viewmodels.LoginActivityViewModel;
 import com.example.root.testapplicationo.retofit_test.viewmodels.viewmodelstate.UserAuthenticationState;
+
+import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity implements View.OnTouchListener, AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener {
     Context mContext ;
     ActivityHomeBinding mActivityHomeBinding ;
     HomeActivityViewModel mHomeActivityViewModel ;
+    ArrayList<Length> list ;
 
     private LoginActivityViewModel mLoginActivityViewModel;
     @Override
@@ -36,7 +41,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnTouchListe
         mActivityHomeBinding = DataBindingUtil.setContentView(this,R.layout.activity_home);
         mHomeActivityViewModel = ViewModelProviders.of(HomeActivity.this).get(HomeActivityViewModel.class);
         initView();
-
         itemClickListners();
         subscribeFor();
         mHomeActivityViewModel.setCategorySpinner(mActivityHomeBinding.homeCategorySpinner,mContext);
@@ -52,8 +56,22 @@ public class HomeActivity extends AppCompatActivity implements View.OnTouchListe
                     Toast.makeText(getApplicationContext(),"cat spinner toched",Toast.LENGTH_LONG);
 
                 }
+
             }
         });
+
+        mHomeActivityViewModel.subcribeForCategorySpinnerResponce().observe(this, new Observer<ArrayList<Length>>() {
+            @Override
+            public void onChanged(@Nullable ArrayList<Length> lengths) {
+                 list = new ArrayList<>();
+                if (lengths.size() > 0) {
+                    list = lengths;
+
+                }
+
+            }
+        });
+
     }
 
 
@@ -134,6 +152,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnTouchListe
     }
 
     private void initView() {
+
     }
 
     @Override

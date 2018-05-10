@@ -9,7 +9,6 @@ import android.support.annotation.NonNull;
 public class UserAuthenticationState<T> {
     public enum Status {SUCCESS, ERROR, LOADING}
 
-
     @NonNull
     private Status status;
     private T userData;

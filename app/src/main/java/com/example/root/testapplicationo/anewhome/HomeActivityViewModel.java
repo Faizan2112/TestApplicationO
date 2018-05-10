@@ -6,7 +6,6 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.Spinner;
 import com.example.root.testapplicationo.custom_text_field.Length;
-import com.example.root.testapplicationo.custom_text_field.LengthAdapter;
 import com.example.root.testapplicationo.retofit_test.model.repository.UserAuthenticationRepository;
 import com.example.root.testapplicationo.retofit_test.viewmodels.viewmodelstate.UserAuthenticationState;
 
@@ -18,12 +17,17 @@ import retrofit2.Response;
 
 public class HomeActivityViewModel extends ViewModel {
     Context mContext;
-    ArrayList<Length> lengths;
+    static ArrayList<Length> lengths;
     UserAuthenticationRepository mUserAuthenticationRepository = new UserAuthenticationRepository();
     ;
     private ProductResponseModel mProductResponseModel = new ProductResponseModel();
     private MutableLiveData<UserAuthenticationState> mUserAuthenticationState = new MutableLiveData<>();
+    private MutableLiveData<ArrayList<Length>> mProductResponseModelsData = new MutableLiveData<ArrayList<Length>>();
 
+
+    public MutableLiveData<ArrayList<Length>> subcribeForCategorySpinnerResponce() {
+        return mProductResponseModelsData;
+    }
     public MutableLiveData<UserAuthenticationState> subcribeForCategorySpinner() {
         return mUserAuthenticationState;
     }
@@ -44,6 +48,7 @@ public class HomeActivityViewModel extends ViewModel {
         return mUserAuthenticationState;
     }
 
+
     public void setCategorySpinner(final Spinner homeCategorySpinner, final Context mContext) {
         lengths = new ArrayList<>();
         {
@@ -62,8 +67,10 @@ public class HomeActivityViewModel extends ViewModel {
                         lengths.add(length);
 
                     }
-                    LengthAdapter lengthAdapters = new LengthAdapter(mContext,  lengths);
-                    homeCategorySpinner.setAdapter(lengthAdapters);
+                  //  mProductResponseModelsData.setValue(lengths);
+                   // mProductResponseModelsData.postValue(lengths);
+                 /*   LengthAdapter lengthAdapters = new LengthAdapter(mContext,  lengths);
+                    homeCategorySpinner.setAdapter(lengthAdapters);*/
 
                     // Log.i("RESPONSE", "" + response.body().toString());
                 }
@@ -75,6 +82,13 @@ public class HomeActivityViewModel extends ViewModel {
                 }
             });
         }
+
+    }
+
+    public void setCategarySpinnerData()
+    {
+
+        mProductResponseModelsData.postValue(lengths);
 
     }
 

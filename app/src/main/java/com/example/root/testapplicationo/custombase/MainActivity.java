@@ -7,15 +7,16 @@ import com.example.root.testapplicationo.R;
 
 //import com.example.root.testapplicationo.R;
 
-public class MainActivity extends BaseActivity {
+//public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseBackBtnToolbarAcitvity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setView(R.layout.test_main, "My Activity Name");
+        setView(R.layout.test_main, "Demo Activity");
     }
 
-    @Override
+   /* @Override
     public void initViews() {
 
     }
@@ -23,6 +24,6 @@ public class MainActivity extends BaseActivity {
     @Override
     public void setFonts() {
 
-    }
+    }*/
 
 }

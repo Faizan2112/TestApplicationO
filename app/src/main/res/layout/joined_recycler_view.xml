@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+   >
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+       >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/join_user_image"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                 android:layout_weight=".25" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".7"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".33"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:id="@+id/join_recycle_name"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".7"
+                        android:gravity="left|center"
+                        android:text="@string/name"
+
+                        />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".33"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:id="@+id/join_recycle_company"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".5"
+                        android:text="@string/year"
+                        android:gravity="center|left" />
+                    <TextView
+
+                        android:id="@+id/join_recycle_position"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".5"
+                        android:gravity="center|left"
+                        android:text="@string/branch"
+                        />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".33"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/join_chat_btn"
+
+                        android:layout_margin="@dimen/margin_extra_small"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".33"
+                        android:text="chat"
+                        android:textColor="@color/white"
+                          />
+                    <Button
+                        android:id="@+id/join_call_btn"
+                        android:padding="@dimen/margin_extra_small"
+                        android:drawableLeft= "@drawable/callss"
+                        android:layout_margin="@dimen/margin_extra_small"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".33"
+                        android:text="call"
+                        android:textColor="@color/white"
+
+                        />
+
+
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+
+</LinearLayout>
