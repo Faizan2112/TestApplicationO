@@ -25,7 +25,7 @@ public interface UserAuthenticationApiService {
 
 // form Url encoded is only used with post
 
-    @GET("/freshup_oms//api/getAllCategory")
+    @GET("/freshup_oms/api/getAllCategory")
     Call<ProductResponseModel> setCatData();
 
 

@@ -44,6 +44,7 @@ public class ColorAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         view = inflter.inflate(R.layout.category_list_view, null);
+        //view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.category_list_view,viewGroup,false);
         TextView catName = (TextView) view.findViewById(R.id.category_cat_name);
       //  for (int j = 0; j <= colorModelList.size(); j++) {
 

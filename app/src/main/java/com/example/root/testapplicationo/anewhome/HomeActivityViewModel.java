@@ -22,6 +22,12 @@ public class HomeActivityViewModel extends ViewModel {
     UserAuthenticationRepository mUserAuthenticationRepository = new UserAuthenticationRepository();
     ;
     private ProductResponseModel mProductResponseModel = new ProductResponseModel();
+    private MutableLiveData<UserAuthenticationState<ArrayList<ProductResponseModel>>> mResultListMutableLiveData = new MutableLiveData<>();
+
+    public MutableLiveData<UserAuthenticationState<ArrayList<ProductResponseModel>>> subcribeForCategorySpinnerData() {
+        return mResultListMutableLiveData;
+    }
+
     private MutableLiveData<UserAuthenticationState> mUserAuthenticationState = new MutableLiveData<>();
 
     public MutableLiveData<UserAuthenticationState> subcribeForCategorySpinner() {
@@ -44,7 +50,25 @@ public class HomeActivityViewModel extends ViewModel {
         return mUserAuthenticationState;
     }
 
-    public void setCategorySpinner(final Spinner homeCategorySpinner, final Context mContext) {
+    public  void fetchSpinnerData()
+    {
+     mResultListMutableLiveData.postValue(UserAuthenticationState.loading(null));
+
+     mUserAuthenticationRepository.setCatProSpin(new Callback<ProductResponseModel>() {
+         @Override
+         public void onResponse(Call<ProductResponseModel> call, Response<ProductResponseModel> response) {
+             mResultListMutableLiveData.postValue(UserAuthenticationState.success(response.body()));
+         }
+
+         @Override
+         public void onFailure(Call<ProductResponseModel> call, Throwable t) {
+
+         }
+     });
+
+    }
+
+   /* public void setCategorySpinner(final Spinner homeCategorySpinner, final Context mContext) {
         lengths = new ArrayList<>();
         {
             mUserAuthenticationState.postValue(UserAuthenticationState.loading(mProductResponseModel));
@@ -77,7 +101,7 @@ public class HomeActivityViewModel extends ViewModel {
         }
 
     }
-
+*/
     public void setSubCategorySpinner(String val) {
 
 

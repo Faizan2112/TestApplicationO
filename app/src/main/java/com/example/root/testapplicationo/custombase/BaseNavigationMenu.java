@@ -5,24 +5,11 @@ import android.os.Bundle;
 
 import com.example.root.testapplicationo.R;
 
-//import com.example.root.testapplicationo.R;
-
-public class MainActivity extends CommonBottomAndToolBarActivity {
+public class BaseNavigationMenu extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setView(R.layout.test_main, "My Activity Name");
+        setContentView(R.layout.activity_base_navigation_menu);
     }
-/*
-    @Override
-    public void initViews() {
-
-    }
-
-    @Override
-    public void setFonts() {
-
-    }*/
-
 }

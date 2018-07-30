@@ -15,12 +15,12 @@
     <!--android:icon="@drawable/ic_work_black_24dp"-->
 
     <item
-            android:id="@+id/navigation_notifications"
+            android:id="@+id/navigation_meetUp"
 
             android:title="@string/title_workexp"/>
     <!--android:icon="@drawable/ic_school_black_24dp"-->
     <item
-            android:id="@+id/navigation_education"
+            android:id="@+id/navigation_logo"
 
             android:title="@string/title_education"/>
 

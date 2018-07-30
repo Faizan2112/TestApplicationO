@@ -8,6 +8,8 @@ import android.databinding.DataBindingUtil;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -23,28 +25,74 @@ import com.example.root.testapplicationo.databinding.ActivityHomeBinding;
 import com.example.root.testapplicationo.retofit_test.viewmodels.LoginActivityViewModel;
 import com.example.root.testapplicationo.retofit_test.viewmodels.viewmodelstate.UserAuthenticationState;
 
+import java.util.ArrayList;
+
 public class HomeActivity extends AppCompatActivity implements View.OnTouchListener, AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener {
-    Context mContext ;
-    ActivityHomeBinding mActivityHomeBinding ;
-    HomeActivityViewModel mHomeActivityViewModel ;
+    Context mContext;
+    ActivityHomeBinding mActivityHomeBinding;
+    HomeActivityViewModel mHomeActivityViewModel;
+    ArrayList<ProductResponseModel> resultCategoryData = new ArrayList<>();
+    RecyclerView mProductRecyclerView;
+    SpinnerAdapters mSpinnerAdapters;
+
 
     private LoginActivityViewModel mLoginActivityViewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        mActivityHomeBinding = DataBindingUtil.setContentView(this,R.layout.activity_home);
+        mActivityHomeBinding = DataBindingUtil.setContentView(this, R.layout.activity_home);
+        mSpinnerAdapters = new SpinnerAdapters(resultCategoryData);
+
         mHomeActivityViewModel = ViewModelProviders.of(HomeActivity.this).get(HomeActivityViewModel.class);
+
         initView();
 
+        initRvChatDialog();
         itemClickListners();
+
+        //mHomeActivityViewModel.setCategorySpinner(mActivityHomeBinding.homeCategorySpinner,mContext);
         subscribeFor();
-        mHomeActivityViewModel.setCategorySpinner(mActivityHomeBinding.homeCategorySpinner,mContext);
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mHomeActivityViewModel.fetchSpinnerData();
+
+    }
+
+
+    private void initRvChatDialog() {
+        mProductRecyclerView = findViewById(R.id.test_recycler_view);
+        mProductRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mProductRecyclerView.setAdapter(mSpinnerAdapters);
+    }
+
     private void subscribeFor() {
-        mHomeActivityViewModel.subcribeForCategorySpinner().observe(this, new Observer<UserAuthenticationState>() {
+        mHomeActivityViewModel.subcribeForCategorySpinnerData().observe(this, new Observer<UserAuthenticationState<ArrayList<ProductResponseModel>>>() {
+            @Override
+            public void onChanged(@Nullable UserAuthenticationState<ArrayList<ProductResponseModel>> arrayListUserAuthenticationState) {
+                switch (arrayListUserAuthenticationState.getStatus()) {
+                    case LOADING:
+                        Toast.makeText(HomeActivity.this, "Loading In....", Toast.LENGTH_SHORT).show();
+
+                        break ;
+
+                    case SUCCESS:
+                        //mSpinnerAdapters = new SpinnerAdapters(m);
+                         mSpinnerAdapters.setAdapterItemList(arrayListUserAuthenticationState.getUserData());
+
+                      break ;
+
+
+                }
+            }
+        });
+
+       /* mHomeActivityViewModel.subcribeForCategorySpinner().observe(this, new Observer<UserAuthenticationState>() {
             @Override
             public void onChanged(@Nullable UserAuthenticationState userAuthenticationState) {
                 if (userAuthenticationState.getStatus() == UserAuthenticationState.Status.SUCCESS) {
@@ -53,9 +101,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnTouchListe
 
                 }
             }
-        });
+        });*/
     }
-
 
 
     private void itemClickListners() {
@@ -69,7 +116,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnTouchListe
 
         //product select
         mActivityHomeBinding.homeCatProduct.setOnItemSelectedListener(this);
-       // mActivityHomeBinding.homeCatProduct.setOnItemClickListener(this);
+        // mActivityHomeBinding.homeCatProduct.setOnItemClickListener(this);
 
         //autocomplete text view
         // width
@@ -148,16 +195,15 @@ public class HomeActivity extends AppCompatActivity implements View.OnTouchListe
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        switch (adapterView.getId())
-        {
+        switch (adapterView.getId()) {
             case R.id.home_category_spinner:
-                openSubCategarySpinner(adapterView,view,i,l,1);
+                openSubCategarySpinner(adapterView, view, i, l, 1);
 
-                break ;
+                break;
 
             case R.id.home_sub_category_spinner:
-                openSubCategarySpinner(adapterView,view,i,l,2);
-                break ;
+                openSubCategarySpinner(adapterView, view, i, l, 2);
+                break;
         }
 
 
@@ -165,17 +211,16 @@ public class HomeActivity extends AppCompatActivity implements View.OnTouchListe
 
     private void openSubCategarySpinner(AdapterView<?> adapterView, View view, int i, long l, int i1) {
 
-        switch (i1)
-        {
-            case 1 :
-                Toast.makeText(getApplicationContext(),"cat spinner toched",Toast.LENGTH_LONG);
-             // mHomeActivityViewModel.setCategorySpinner();
-                break ;
+        switch (i1) {
+            case 1:
+                Toast.makeText(getApplicationContext(), "cat spinner toched", Toast.LENGTH_LONG);
+                // mHomeActivityViewModel.setCategorySpinner();
+                break;
 
-            case 2 :
+            case 2:
 
-                Toast.makeText(getApplicationContext(),"sub cat spinner toched",Toast.LENGTH_LONG);
-                break ;
+                Toast.makeText(getApplicationContext(), "sub cat spinner toched", Toast.LENGTH_LONG);
+                break;
 
         }
 

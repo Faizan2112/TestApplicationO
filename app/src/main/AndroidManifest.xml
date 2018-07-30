@@ -46,19 +46,21 @@
         <activity android:name=".newautodropdown.NewDropDownActivity" />
         <activity android:name=".databindingtest.DataBindTestActivity" />
         <activity android:name=".retrotest.RetroTest" />
-        <activity android:name=".anewhome.HomeActivity">
-
-        </activity>
+        <activity android:name=".anewhome.HomeActivity" />
         <activity android:name=".anewhome.BaseActivity" />
-
-        <activity android:name=".custombase.MainActivity">
+        <activity android:name=".custombase.MainActivity" />
+        <activity android:name=".custombase.CommonBottomAndToolBarActivity" />
+        <activity android:name=".custombase.BaseNavigationMenu" />
+        <activity android:name=".imageupload.UploadImage" />
+        <activity android:name=".rxjava.RXExampleActivity"></activity>
+        <activity android:name=".customview.CustomView">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
+        <activity android:name=".circular_image_view.RoundCirecleImage"></activity>
     </application>
 
 </manifest>
