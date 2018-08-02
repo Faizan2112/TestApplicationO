@@ -1,3 +1,4 @@
+/*
 package com.example.root.testapplicationo;
 
 import android.content.SharedPreferences;
@@ -74,13 +75,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
 
                 parseCategoryDetails(response);
-              /*  try {
+              */
+/*  try {
                   //  responseParse(response);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
                 mPDialog.dismiss();
-*/
+*//*
+
             }
         }, new Response.ErrorListener() {
             @Override
@@ -190,13 +193,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
 
                 parseSubCategoryDetails(response);
-              /*  try {
+              */
+/*  try {
                   //  responseParse(response);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
                 mPDialog.dismiss();
-*/
+*//*
+
             }
         }, new Response.ErrorListener() {
             @Override
@@ -228,3 +233,4 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 }
 
+*/

@@ -54,7 +54,7 @@ import java.util.Set;
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 import static android.Manifest.permission.CAMERA;
-import static com.example.root.testapplicationo.MainActivity.FRESH_UP_SPINNER_SUB_CATEGORY;
+//import static com.example.root.testapplicationo.MainActivity.FRESH_UP_SPINNER_SUB_CATEGORY;
 
 public class SimpleScannerActivity extends BaseScannerActivity implements ZXingScannerView.ResultHandler, View.OnClickListener {
     private ZXingScannerView mScannerView;

@@ -11,7 +11,7 @@ import android.support.v4.app.NotificationCompat;
 import android.text.Html;
 
 import com.example.root.testapplicationo.R;
-import com.google.firebase.messaging.RemoteMessage;
+//import com.google.firebase.messaging.RemoteMessage;
 
 import java.io.IOException;
 import java.io.InputStream;

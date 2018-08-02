@@ -52,15 +52,24 @@
         <activity android:name=".custombase.CommonBottomAndToolBarActivity" />
         <activity android:name=".custombase.BaseNavigationMenu" />
         <activity android:name=".imageupload.UploadImage" />
-        <activity android:name=".rxjava.RXExampleActivity"></activity>
-        <activity android:name=".customview.CustomView">
+        <activity android:name=".rxjava.RXExampleActivity" />
+        <activity android:name=".customview.CustomView"></activity>
+        <activity android:name=".circular_image_view.RoundCirecleImage" />
+        <activity android:name=".horizontal_recycler_view.sample_directory.shop.ShopActivity">
+
+        </activity>
+        <activity android:name=".horizontal_catalogue_view.sample_catalog.CatalogueActivity">
+
+        </activity>
+        <activity android:name=".scheme_recycler_view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+
         </activity>
-        <activity android:name=".circular_image_view.RoundCirecleImage"></activity>
     </application>
 
 </manifest>

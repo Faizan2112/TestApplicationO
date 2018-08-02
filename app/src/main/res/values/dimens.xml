@@ -79,4 +79,8 @@
 
     <integer name="large_size">30</integer>
     <dimen name="appbar_padding_top">8dp</dimen>
+
+    <!--featured recycler view-->
+    <dimen name="defaultItemHeight">100dp</dimen>
+    <dimen name="featuredItemHeight">200dp</dimen>
 </resources>
