@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:text="EditSpinner"
+        android:textSize="20dp" />
+
+    <com.example.root.testapplicationo.spinner_lib.EditSpinner
+        android:id="@+id/edit_spinner_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:hint="enter security question"
+        android:padding="8dp"
+        android:textColorHint="#aa828282"
+        android:textSize="18dp"
+        app:dropDownAnimStyle="@style/CustomPopupAnimation"
+        app:dropDownDrawable="@drawable/picker"
+        app:dropDownDrawableHeight="25dp"
+        app:dropDownDrawableSpacing="15dp"
+        app:dropDownDrawableWidth="25dp" />
+
+    <com.example.root.testapplicationo.spinner_lib.EditSpinner
+        android:id="@+id/edit_spinner_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/custom_editor_bkg"
+        android:hint="enter custom text here"
+        android:padding="8dp"
+        android:textColorHint="#aa828282"
+        android:textSize="18dp" />
+
+    <!--<fr.ganfra.materialspinner.MaterialSpinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ms_multiline="false"
+         app:ms_hint="hint"
+        app:ms_enableFloatingLabel="false"
+        app:ms_enableErrorLabel="false"
+        app:ms_floatingLabelText="floating label"
+
+        app:ms_typeface="typeface.ttf"
+        app:ms_thickness="2dp"
+
+        app:ms_arrowSize="16dp"
+        app:ms_alignLabels="false"
+       />-->
+</LinearLayout>

@@ -151,7 +151,7 @@
                 android:hint="height"
                 android:textColor="@android:color/black" />
             />
-            <Spinner
+          <!--  <Spinner
                 android:id="@+id/home_category_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -163,7 +163,17 @@
                 android:spinnerMode="dropdown"
                 android:textSize="@dimen/abc_text_size_menu_material"
 
-                />
+                />-->
+            <fr.ganfra.materialspinner.MaterialSpinner
+                android:id="@+id/home_category_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:ms_arrowColor="#0000FF"
+                app:ms_arrowSize="16dp"
+                app:ms_floatingLabelColor="#00FF00"
+                app:ms_floatingLabelText="floating label"
+                app:ms_hint="hint"
+                app:ms_multiline="true" />
             <Spinner
                 android:id="@+id/home_sub_category_spinner"
                 android:layout_width="match_parent"

@@ -7,12 +7,13 @@ import com.example.root.testapplicationo.autodropdown.Dog;
 
 import java.util.ArrayList;
 import java.util.List;
+
 public class LenthFilter extends Filter {
     LengthAdapters adapter;
     List<Length> originalList;
     List<Length> filteredList;
 
-    public LenthFilter(LengthAdapters  adapter, ArrayList<Length> originalList) {
+    public LenthFilter(LengthAdapters adapter, ArrayList<Length> originalList) {
         this.adapter = adapter;
         this.originalList = originalList;
         this.filteredList = new ArrayList<>();

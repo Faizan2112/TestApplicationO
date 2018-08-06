@@ -40,10 +40,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import fr.ganfra.materialspinner.MaterialSpinner;
+
 
 public class MrpCalculaterActivity extends BaseActivity implements AdapterView.OnItemSelectedListener, View.OnTouchListener {
-    Spinner mCategorySpinner, mSubCategorySpinner, mCatProductSpinner, mLength, mWidth, mHeight, mColor;
-     AutoCompleteTextView mLenTv , mHeiTv, mWidTv;
+    Spinner mSubCategorySpinner, mCatProductSpinner, mLength, mWidth, mHeight, mColor;
+    MaterialSpinner mCategorySpinner;
+    AutoCompleteTextView mLenTv, mHeiTv, mWidTv;
     private String lent, widt, hei, color;
     private String lentSize, widtSize, heiSize, colorSize;
     private boolean isHeightSpinnerTouched = false;
@@ -51,13 +54,13 @@ public class MrpCalculaterActivity extends BaseActivity implements AdapterView.O
     TextView mPrice;
     EditText mQuantity;
     private Toolbar mToolbar;
-   // private CustomAutoCompleteTextViews
+    // private CustomAutoCompleteTextViews
 
     ArrayList<CategoryModel> mCategoryModels;
     ArrayList<SubCategoryModel> mSubCategoryModels;
     ArrayList<ProductModel> mProductModels;
     ArrayList<Length> mLengths;
-   // ArrayList<Width> mWidths;
+    // ArrayList<Width> mWidths;
     ArrayList<Length> mWidths;
     //ArrayList<Height> mHeights;
     ArrayList<Length> mHeights;
@@ -75,6 +78,8 @@ public class MrpCalculaterActivity extends BaseActivity implements AdapterView.O
     private String userId;
     private String catProductSpinnerValue;
     private LengthAdapters lengthAdapter;
+    private String categorySpinnerValue;
+    private String adapterPos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -150,7 +155,8 @@ public class MrpCalculaterActivity extends BaseActivity implements AdapterView.O
         mHeiTv = findViewById(R.id.mrp_height_textview);
         mWidTv = findViewById(R.id.mrp_breadth_textview);
         mLenTv.setOnTouchListener(this);
-        mCategorySpinner = (Spinner) findViewById(R.id.home_category_spinner);
+        mCategorySpinner = findViewById(R.id.home_category_spinner);
+        //  mCategorySpinner.setHint("Brand");
         mSubCategorySpinner = (Spinner) findViewById(R.id.home_sub_category_spinner);
         mCatProductSpinner = (Spinner) findViewById(R.id.home_cat_product);
         mColor = (Spinner) findViewById(R.id.home_mat_color);
@@ -170,24 +176,25 @@ public class MrpCalculaterActivity extends BaseActivity implements AdapterView.O
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                try{
+                try {
                     int val = Integer.parseInt(String.valueOf(charSequence));
 
-                    if(charSequence.length() > 0  && charSequence.length() <= 2  ) {
+                    if (charSequence.length() > 0 && charSequence.length() <= 2) {
                         if (val <= 30 || val >= 45) {
                             Toast.makeText(getApplicationContext(), "Size must be between 73 to 90", Toast.LENGTH_LONG).show();
 
 
                         }
-                    }
-                    else if(mWidths != null )
-                    {
-                   //     Width wid = ;
+                    } else if (mWidths != null) {
+                        //     Width wid = ;
 
 
                     }
 
-                }catch (Exception e){Toast.makeText(getApplicationContext(),"Enter number",Toast.LENGTH_SHORT).show();};
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "Enter number", Toast.LENGTH_SHORT).show();
+                }
+                ;
 
             }
 
@@ -204,10 +211,10 @@ public class MrpCalculaterActivity extends BaseActivity implements AdapterView.O
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                try{
+                try {
                     int val = Integer.parseInt(String.valueOf(charSequence));
 
-                    if(charSequence.length() > 0  && charSequence.length() <= 2  ) {
+                    if (charSequence.length() > 0 && charSequence.length() <= 2) {
                         if (val <= 4 || val >= 10) {
                             Toast.makeText(getApplicationContext(), "Size must be between 73 to 90", Toast.LENGTH_LONG).show();
 
@@ -215,7 +222,10 @@ public class MrpCalculaterActivity extends BaseActivity implements AdapterView.O
                         }
                     }
 
-                }catch (Exception e){Toast.makeText(getApplicationContext(),"Enter number",Toast.LENGTH_SHORT).show();};
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "Enter number", Toast.LENGTH_SHORT).show();
+                }
+                ;
 
             }
 
@@ -228,17 +238,15 @@ public class MrpCalculaterActivity extends BaseActivity implements AdapterView.O
         mLenTv.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                try{
+                try {
                     int val = Integer.parseInt(String.valueOf(charSequence));
 
-                    if(charSequence.length() > 0  && charSequence.length() <= 2  ) {
+                    if (charSequence.length() > 0 && charSequence.length() <= 2) {
                         if (val <= 73 || val >= 90) {
                             Toast.makeText(getApplicationContext(), "Size must be between 73 to 90", Toast.LENGTH_LONG).show();
 
 
-                        }
-                        else
-                            {
+                        } else {
                                 /*Collections.sort();
 
                                 int target = 4;
@@ -251,10 +259,13 @@ public class MrpCalculaterActivity extends BaseActivity implements AdapterView.O
                                     }
                                 }
                                 */
-                            }
+                        }
                     }
 
-                }catch (Exception e){Toast.makeText(getApplicationContext(),"Enter number",Toast.LENGTH_SHORT).show();};
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "Enter number", Toast.LENGTH_SHORT).show();
+                }
+                ;
 
             }
 
@@ -282,11 +293,34 @@ public class MrpCalculaterActivity extends BaseActivity implements AdapterView.O
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+        String s = null;
         int ids = adapterView.getId();
+        try {
+            categorySpinnerValue = mCategoryModels.get(position + 1).getmCategoryId();
+
+        } catch (Exception e) {
+        }
 
         switch (ids) {
             case R.id.home_category_spinner:
-                String categorySpinnerValue = mCategoryModels.get(position).getmCategoryId();
+
+
+                if (categorySpinnerValue.equals("")) {
+                    categorySpinnerValue = String.valueOf(mCategoryModels.size() - 1);
+
+                }
+                else if(0 < Integer.valueOf(categorySpinnerValue) && Integer.valueOf(categorySpinnerValue) < mCategoryModels.size() )
+                    {
+                        categorySpinnerValue = String.valueOf(Integer.valueOf(mCategoryModels.get(position).getmCategoryId()));
+
+                    }
+              /*  try {
+                    categorySpinnerValue = mCategoryModels.get(position + 1).getmCategoryId();
+
+                } catch (Exception e) {
+                }
+                if(categorySpinnerValue.equals(null))
+                   categorySpinnerValue = String.valueOf(mCategoryModels.size()-1);*/
 
                 if (mSubCategoryModels != null) {
                     mSubCategoryModels.clear();
@@ -336,15 +370,15 @@ public class MrpCalculaterActivity extends BaseActivity implements AdapterView.O
                    */ /*String items = lengthAdapter.getSele
                     int pso = lengthAdapter.getPosition();*/
                     //mLenTv.setSelection(Integer.parseInt(friends_id));
-                   // lent = mHLengths.get(position).get("name").getLabel().toString();
+                    // lent = mHLengths.get(position).get("name").getLabel().toString();
                     //lentSize = mLengths.get(position).getLabel().toString();
-                   // mLenTv.setText(friends_id);
+                    // mLenTv.setText(friends_id);
 
                 }
 
                 break;
             case R.id.mrp_height_textview:
-               performAction(adapterView,position);
+                performAction(adapterView, position);
                 break;
             case R.id.mrp_breadth_textview:
                 if (mLength != null) {
@@ -373,7 +407,6 @@ public class MrpCalculaterActivity extends BaseActivity implements AdapterView.O
             fetchColorAndPrice(lent, widt, hei);
         }
     }
-
 
 
     private void fillDimentionSpinners(final String fetchDimentionByValue) {
@@ -435,17 +468,17 @@ public class MrpCalculaterActivity extends BaseActivity implements AdapterView.O
                     length = new Length(value, label);
                     mLengths.add(length);
 
-                  //  stringLengthHashMap.put("name", length);
-                   // mHLengths.add(stringLengthHashMap);
+                    //  stringLengthHashMap.put("name", length);
+                    // mHLengths.add(stringLengthHashMap);
                 }
 
 
-                 lengthAdapter = new LengthAdapters(getApplicationContext(),layoutItemId, mLengths);
-             //   SupplierSuggestionAdapter supplierSuggestionAdapter = new SupplierSuggestionAdapter(MrpCalculaterActivity.this, R.layout.row_dog, mHLengths);
-             // HashLenthAdapter hashLenthAdapter = new HashLenthAdapter(getApplicationContext(),layoutItemId,mHLengths);
-              mLenTv.setAdapter(lengthAdapter);
-                   mLenTv.setThreshold(-1);
-             //   mLenTv.setAdapter(lengthAdapter);
+                lengthAdapter = new LengthAdapters(getApplicationContext(), layoutItemId, mLengths);
+                //   SupplierSuggestionAdapter supplierSuggestionAdapter = new SupplierSuggestionAdapter(MrpCalculaterActivity.this, R.layout.row_dog, mHLengths);
+                // HashLenthAdapter hashLenthAdapter = new HashLenthAdapter(getApplicationContext(),layoutItemId,mHLengths);
+                mLenTv.setAdapter(lengthAdapter);
+                mLenTv.setThreshold(0);
+                //   mLenTv.setAdapter(lengthAdapter);
             }
             if (categoryObject.has(Constants.FRESH_UP_MAT_DIMENTION_WIDTH)) {
                 JSONArray categaryArray = categoryObject.getJSONArray(Constants.FRESH_UP_MAT_DIMENTION_WIDTH);
@@ -457,7 +490,7 @@ public class MrpCalculaterActivity extends BaseActivity implements AdapterView.O
                     Length width = new Length(value, label);
                     mWidths.add(width);
                 }
-                lengthAdapter = new LengthAdapters(getApplicationContext(),layoutItemId, mWidths);
+                lengthAdapter = new LengthAdapters(getApplicationContext(), layoutItemId, mWidths);
                 //   SupplierSuggestionAdapter supplierSuggestionAdapter = new SupplierSuggestionAdapter(MrpCalculaterActivity.this, R.layout.row_dog, mHLengths);
                 // HashLenthAdapter hashLenthAdapter = new HashLenthAdapter(getApplicationContext(),layoutItemId,mHLengths);
                 mWidTv.setAdapter(lengthAdapter);
@@ -478,7 +511,7 @@ public class MrpCalculaterActivity extends BaseActivity implements AdapterView.O
                     Length height = new Length(value, label);
                     mHeights.add(height);
                 }
-                lengthAdapter = new LengthAdapters(getApplicationContext(),layoutItemId, mHeights);
+                lengthAdapter = new LengthAdapters(getApplicationContext(), layoutItemId, mHeights);
                 //   SupplierSuggestionAdapter supplierSuggestionAdapter = new SupplierSuggestionAdapter(MrpCalculaterActivity.this, R.layout.row_dog, mHLengths);
                 // HashLenthAdapter hashLenthAdapter = new HashLenthAdapter(getApplicationContext(),layoutItemId,mHLengths);
                 mHeiTv.setAdapter(lengthAdapter);
@@ -625,7 +658,7 @@ public class MrpCalculaterActivity extends BaseActivity implements AdapterView.O
 
 
     private void openSubCategorySpinner(final String categorySpinnerValue) {
-        final String posVal = categorySpinnerValue;
+        final int posVal = Integer.valueOf(categorySpinnerValue);
 
         final StringRequest fetchSubCategory = new StringRequest(Request.Method.POST, UrlConstants.FRESH_UP_SPINNER_SUB_CATEGORY, new Response.Listener<String>() {
 
@@ -645,7 +678,7 @@ public class MrpCalculaterActivity extends BaseActivity implements AdapterView.O
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> inputSubCategory = new HashMap<>();
-                inputSubCategory.put(Constants.SENDS_CAT_IDS, posVal);
+                inputSubCategory.put(Constants.SENDS_CAT_IDS, String.valueOf(posVal));
 
                 return inputSubCategory;
             }
@@ -699,16 +732,23 @@ public class MrpCalculaterActivity extends BaseActivity implements AdapterView.O
     public boolean onTouch(View view, MotionEvent motionEvent) {
         switch (view.getId()) {
             case R.id.mrp_lenth_textview:
-              //  mLenTv.setThreshold(-1);
-
+                //  mLenTv.setThreshold(-1);
+             /*   if (mLengths.size() > 0) {
+                    // show all suggestions
+                    if (mLenTv.getText().toString().equals(""))
+             */
                 mLenTv.showDropDown();
+                // lengthAdapter.getFilter().filter(null);
+
+
+                //   mLenTv.showDropDown();
                 break;
             /*case R.id.mrp_height_textview:
             //    mHeiTv.setThreshold(-1);
                 mHeiTv.showDropDown();
                 break;*/
             case R.id.mrp_breadth_textview:
-             //   mWidTv.setThreshold(-1);
+                //   mWidTv.setThreshold(-1);
                 mWidTv.showDropDown();
                 break;
 

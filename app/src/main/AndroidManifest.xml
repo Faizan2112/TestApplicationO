@@ -18,12 +18,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" />
+
         <activity android:name=".barcode_scanner.BarCodeActivity" />
         <activity android:name=".sticky_header.SectionRecViewActivity" />
         <activity android:name=".mvvmtest.DemoMvvm" />
         <activity android:name=".retofit_test.view.activity.NewLoginActivity" />
-        <activity android:name=".custom_text_field.MrpCalculaterActivity" />
+        <activity android:name=".custom_text_field.MrpCalculaterActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
 
         <service android:name=".firebasetest.MyFirebaseInstanceIdService">
             <intent-filter>
@@ -53,21 +60,13 @@
         <activity android:name=".custombase.BaseNavigationMenu" />
         <activity android:name=".imageupload.UploadImage" />
         <activity android:name=".rxjava.RXExampleActivity" />
-        <activity android:name=".customview.CustomView"></activity>
+        <activity android:name=".customview.CustomView" />
         <activity android:name=".circular_image_view.RoundCirecleImage" />
-        <activity android:name=".horizontal_recycler_view.sample_directory.shop.ShopActivity">
-
-        </activity>
-        <activity android:name=".horizontal_catalogue_view.sample_catalog.CatalogueActivity">
-
-        </activity>
-        <activity android:name=".scheme_recycler_view.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
+        <activity android:name=".horizontal_recycler_view.sample_directory.shop.ShopActivity" />
+        <activity android:name=".horizontal_catalogue_view.sample_catalog.CatalogueActivity" />
+        <activity android:name=".scheme_recycler_view.MainActivity" />
+        <activity android:name=".spinner_lib.DemoActivity"></activity>
+        <activity android:name=".spinner_lib.FloatTextSpinner">
 
         </activity>
     </application>

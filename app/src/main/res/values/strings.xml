@@ -428,4 +428,19 @@
     <string name="msg_unsupported_op">Unsupported operation</string>
     <string name="pref_key_transition_time" translatable="false">pref_key_transition_time</string>
     <string name="mi_rate_on_github">Rate on GitHub</string>
+
+    <string-array name="edits_array_1">
+        <item>What is your favorite color?</item>
+        <item>When is your dad\'s birthday?</item>
+        <item>When was your first date?</item>
+        <item>Who was your childhood hero?</item>
+        <item>What is GF/BF\'s nickname?</item>
+    </string-array>
+
+    <string-array name="edits_array_2">
+        <item>text one</item>
+        <item>text two</item>
+        <item>text three</item>
+        <item>custom text</item>
+    </string-array>
 </resources>
