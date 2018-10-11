@@ -1,6 +1,6 @@
 <resources>
 
-  <!--  &lt;!&ndash; Base application theme. &ndash;&gt;
+    <!--  &lt;!&ndash; Base application theme. &ndash;&gt;
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         &lt;!&ndash; Customize your theme here. &ndash;&gt;
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -33,9 +33,9 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="Spinner" parent="android:TextAppearance.Widget.TextView.SpinnerItem">
         <item name="android:textColor">#b1b0b0</item>
@@ -71,12 +71,36 @@
         <item name="android:clickable">true</item>
         <item name="android:background">?android:selectableItemBackground</item>
     </style>
-  <!--  <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <!--  <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 -->
     <style name="CustomPopupAnimation" mce_bogus="1" parent="android:Animation">
         <item name="android:windowEnterAnimation">@anim/custom_anim_from_top</item>
         <item name="android:windowExitAnimation">@anim/custom_anim_to_top</item>
     </style>
+    <declare-styleable name="FABRevealMenu">
+        <attr name="menuBackgroundColor" format="color" />
+        <attr name="menuCustomView" format="reference" />
+        <attr name="menuRes" format="reference" />
+        <attr name="menuDirection" format="enum">
+            <enum name="left" value="0" />
+            <enum name="up" value="1" />
+            <enum name="right" value="2" />
+            <enum name="down" value="3" />
+        </attr>
+        <attr name="showOverlay" format="boolean" />
+        <attr name="overlayBackground" format="color" />
+
+        <attr name="showTitle" format="boolean" />
+        <attr name="menuTitleTextColor" format="color" />
+        <attr name="menuTitleDisabledTextColor" format="color" />
+        <attr name="animateItems" format="boolean" />
+        <attr name="menuSize" format="enum">
+            <enum name="normal" value="0" />
+            <enum name="small" value="1" />
+        </attr>
+
+        <attr name="menuTitleFontFamily" format="reference" />
+    </declare-styleable>
 
 </resources>

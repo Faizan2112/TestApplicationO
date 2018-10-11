@@ -7,6 +7,7 @@ import android.util.Log;
 import android.widget.Spinner;
 import com.example.root.testapplicationo.custom_text_field.Length;
 import com.example.root.testapplicationo.custom_text_field.LengthAdapter;
+import com.example.root.testapplicationo.infiniterecyclerview.ResponseModel;
 import com.example.root.testapplicationo.retofit_test.model.repository.UserAuthenticationRepository;
 import com.example.root.testapplicationo.retofit_test.viewmodels.viewmodelstate.UserAuthenticationState;
 
@@ -20,7 +21,12 @@ public class HomeActivityViewModel extends ViewModel {
     Context mContext;
     ArrayList<Length> lengths;
     UserAuthenticationRepository mUserAuthenticationRepository = new UserAuthenticationRepository();
-    ;
+    MutableLiveData<UserAuthenticationState<ResponseModel>> modelMutableLiveData = new MutableLiveData<>();
+    MutableLiveData<UserAuthenticationState<ResponseModel>> subscribefordata ()
+    {
+        return  modelMutableLiveData ;
+
+    }
     private ProductResponseModel mProductResponseModel = new ProductResponseModel();
     private MutableLiveData<UserAuthenticationState<ArrayList<ProductResponseModel>>> mResultListMutableLiveData = new MutableLiveData<>();
 
@@ -65,6 +71,13 @@ public class HomeActivityViewModel extends ViewModel {
 
          }
      });
+
+    }
+
+    public void getAnswer()
+    {
+        modelMutableLiveData.postValue(UserAuthenticationState.loading(null));
+        
 
     }
 

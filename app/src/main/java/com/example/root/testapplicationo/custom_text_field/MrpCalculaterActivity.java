@@ -295,32 +295,18 @@ public class MrpCalculaterActivity extends BaseActivity implements AdapterView.O
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
         String s = null;
         int ids = adapterView.getId();
-        try {
-            categorySpinnerValue = mCategoryModels.get(position + 1).getmCategoryId();
 
-        } catch (Exception e) {
+        if(position == -1)
+        {
+            position = position + 1 ;
+
         }
+
+            categorySpinnerValue = mCategoryModels.get(position).getmCategoryId();
+
 
         switch (ids) {
             case R.id.home_category_spinner:
-
-
-                if (categorySpinnerValue.equals("")) {
-                    categorySpinnerValue = String.valueOf(mCategoryModels.size() - 1);
-
-                }
-                else if(0 < Integer.valueOf(categorySpinnerValue) && Integer.valueOf(categorySpinnerValue) < mCategoryModels.size() )
-                    {
-                        categorySpinnerValue = String.valueOf(Integer.valueOf(mCategoryModels.get(position).getmCategoryId()));
-
-                    }
-              /*  try {
-                    categorySpinnerValue = mCategoryModels.get(position + 1).getmCategoryId();
-
-                } catch (Exception e) {
-                }
-                if(categorySpinnerValue.equals(null))
-                   categorySpinnerValue = String.valueOf(mCategoryModels.size()-1);*/
 
                 if (mSubCategoryModels != null) {
                     mSubCategoryModels.clear();

@@ -3,6 +3,7 @@ package com.example.root.testapplicationo.retofit_test.model.repository;
 
 
 import com.example.root.testapplicationo.anewhome.ProductResponseModel;
+import com.example.root.testapplicationo.infiniterecyclerview.ResponseModel;
 import com.example.root.testapplicationo.retofit_test.model.repository.api.RetrofitAPIController;
 import com.example.root.testapplicationo.retofit_test.model.repository.api.UserAuthenticationApiService;
 import com.example.root.testapplicationo.retofit_test.model.repository.api.responsemodel.UserLoginApiResponse;
@@ -37,4 +38,14 @@ public class UserAuthenticationRepository {
 
 
     }
+
+    public void getUserAnswer(Callback<ResponseModel> callback , int page ,int pagesize,String site)
+    {
+        UserAuthenticationApiService apiService = RetrofitAPIController.getRetofitApiClient(UserAuthenticationApiService.class);
+        Call<ResponseModel> productResponseModelCallback = apiService.getAnswers(page,pagesize,site);
+        productResponseModelCallback.enqueue(callback);
+
+
+    }
+
 }

@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.AppBarLayout android:layout_width="match_parent"
+    android:layout_height="130dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:padding="@dimen/edit_box_icon_padding8"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="?attr/colorPrimary"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:weightSum="1"
+            android:orientation="vertical"
+            >
+            <!--<LinearLayout
+                android:layout_marginTop="10dp"
+                android:paddingTop="@dimen/edit_box_icon_padding12"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:padding="@dimen/edit_box_icon_padding4"
+                android:layout_weight=".25"
+                android:background="@drawable/search_background"
+                >
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".01"
+                    />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight=".05"
+                    android:background="@drawable/search"
+                    android:padding="@dimen/edit_box_icon_padding4" />
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".03"
+                    />
+
+                <MultiAutoCompleteTextView
+
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".68"
+                    android:background="@color/Transparent"
+
+                    android:hint="Search"
+                    android:textSize="@dimen/t3_size"
+                    android:textColorHint="@color/Grey"
+                    />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="15dp"
+                    android:layout_weight=".05"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/microphone"
+
+
+                    />
+
+
+            </LinearLayout>-->
+
+
+
+        </LinearLayout>
+
+
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+
+        android:background="@color/colorPrimary"
+        android:padding="@dimen/edit_box_icon_padding8"
+        android:weightSum="1">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".01" />
+      <LinearLayout
+          android:layout_width="0dp"
+          android:layout_weight=".31"
+          android:layout_height="wrap_content"
+         android:background="@drawable/search_background"
+          >
+          <fr.ganfra.materialspinner.MaterialSpinner
+              android:id="@+id/home_category_spinner"
+              android:layout_width="match_parent"
+               android:layout_height="50dp"
+              app:ms_arrowColor="#0000FF"
+              app:ms_arrowSize="10dp"
+              app:ms_floatingLabelColor="#00FF00"
+              app:ms_floatingLabelText="floating label"
+              app:ms_hint="hint"
+
+
+              />
+
+
+      </LinearLayout>
+
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".02" />
+
+
+        <com.example.root.testapplicationo.material_spinner.MaterialSpinner
+            android:id="@+id/home_sub_category_spinner"
+            android:layout_width="0dp"
+            android:layout_weight=".31"
+            android:layout_height="65dp"
+            app:ms_arrowColor="#0000FF"
+            app:ms_arrowSize="10dp"
+            app:ms_floatingLabelColor="#00FF00"
+            app:ms_floatingLabelText="floating label"
+            app:ms_hint="hint"
+            app:ms_multiline="true"
+            />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".02" />
+        <fr.ganfra.materialspinner.MaterialSpinner
+            android:id="@+id/home_cat_product"
+            android:layout_width="0dp"
+            android:layout_weight=".31"
+            android:layout_height="wrap_content"
+            app:ms_arrowColor="#0000FF"
+            app:ms_arrowSize="10dp"
+            app:ms_floatingLabelColor="#00FF00"
+            app:ms_floatingLabelText="floating label"
+            app:ms_hint="hint"
+            app:ms_baseColor="@color/white"
+            app:ms_multiline="true"
+
+            />
+
+
+
+
+    </LinearLayout>
+</android.support.design.widget.AppBarLayout>
+
+
+<!--
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="80dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_weight=".1"
+    android:background="@color/colorPrimary"
+    android:weightSum="1"
+    android:padding="@dimen/edit_box_icon_padding8"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight=".01"
+        />
+    <fr.ganfra.materialspinner.MaterialSpinner
+        android:id="@+id/home_category_spinner"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/search_background"
+        app:ms_arrowColor="#0000FF"
+        app:ms_arrowSize="16dp"
+        app:ms_floatingLabelColor="#00FF00"
+        app:ms_floatingLabelText="floating label"
+        app:ms_hint="hint"
+        app:ms_multiline="true" />
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight=".02"
+        />
+    <Spinner
+        android:id="@+id/home_sub_category_spinner"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight=".31"
+        android:background="@drawable/search_background"
+        android:prompt="@string/sub_categories"
+        android:textAlignment="center"
+        android:spinnerMode="dropdown"
+
+        >
+
+
+    </Spinner>
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight=".02"
+        />
+    <Spinner
+        android:id="@+id/home_cat_product"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight=".31"
+        android:spinnerMode="dropdown"
+        android:background="@drawable/search_background"
+        android:prompt="@string/select_product">
+
+
+    </Spinner>
+</LinearLayout>-->

@@ -18,19 +18,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity android:name=".barcode_scanner.BarCodeActivity" />
         <activity android:name=".sticky_header.SectionRecViewActivity" />
         <activity android:name=".mvvmtest.DemoMvvm" />
         <activity android:name=".retofit_test.view.activity.NewLoginActivity" />
-        <activity android:name=".custom_text_field.MrpCalculaterActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-        </activity>
+        <activity android:name=".custom_text_field.MrpCalculaterActivity" />
 
         <service android:name=".firebasetest.MyFirebaseInstanceIdService">
             <intent-filter>
@@ -65,10 +57,19 @@
         <activity android:name=".horizontal_recycler_view.sample_directory.shop.ShopActivity" />
         <activity android:name=".horizontal_catalogue_view.sample_catalog.CatalogueActivity" />
         <activity android:name=".scheme_recycler_view.MainActivity" />
-        <activity android:name=".spinner_lib.DemoActivity"></activity>
-        <activity android:name=".spinner_lib.FloatTextSpinner">
+        <activity android:name=".spinner_lib.DemoActivity" />
+        <activity android:name=".spinner_lib.FloatTextSpinner" />
+        <activity android:name=".expand.ExpandActivity" />
+        <activity android:name=".expandablelistview.ExpandableActivity" />
+        <activity android:name=".aadatatester.DataTesterActivity" />
+        <activity android:name=".fabmenu.FabTestActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
+        <activity android:name=".infiniterecyclerview.InfiniteRecyclerView"></activity>
     </application>
 
 </manifest>

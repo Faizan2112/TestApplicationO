@@ -443,4 +443,5 @@
         <item>text three</item>
         <item>custom text</item>
     </string-array>
+    <string name="title_activity_fab">FabActivity</string>
 </resources>
