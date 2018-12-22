@@ -1,9 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".aadatatester.DataTesterActivity">
+    xmlns:shimmer="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:orientation="vertical"
+    >
+    <EditText
+        android:id="@+id/text_edit"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+    <Button
+        android:id="@+id/test_data"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
 
-</android.support.constraint.ConstraintLayout>
+        />
+
+    <TextView
+        android:id="@+id/test_text"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+<FrameLayout
+    android:id="@+id/frame_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+</FrameLayout>
+   <!-- <fragment
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        class="com.example.root.testapplicationo.fragments.ItemFragment"
+        layout="@layout/fragment_item_list" />
+ -->  <!-- <Space
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/margin_xxlarge" />
+    <TextView
+        android:id="@+id/home_item_picker_rv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:text="Stoneware + Porcelain Plate" />
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="16dp" />
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="150dp"
+
+
+        />
+
+
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="4dp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        >
+        <android.support.v4.widget.Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".53"
+            />
+        <TextView
+
+            android:id="@+id/home_item_picker_rv_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold"
+            android:textSize="@dimen/t16_size"
+            tools:text="$24.00 USD"
+            android:padding="@dimen/margin_small"
+            android:gravity="center"
+            android:text="See Details"
+
+            />
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="10dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000"
+        >
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/home_grid_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </android.support.v7.widget.RecyclerView>
+
+
+
+    </LinearLayout>-->
+</LinearLayout>

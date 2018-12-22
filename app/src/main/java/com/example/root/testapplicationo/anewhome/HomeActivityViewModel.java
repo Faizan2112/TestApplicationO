@@ -22,7 +22,7 @@ public class HomeActivityViewModel extends ViewModel {
     ArrayList<Length> lengths;
     UserAuthenticationRepository mUserAuthenticationRepository = new UserAuthenticationRepository();
     MutableLiveData<UserAuthenticationState<ResponseModel>> modelMutableLiveData = new MutableLiveData<>();
-    MutableLiveData<UserAuthenticationState<ResponseModel>> subscribefordata ()
+    public  MutableLiveData<UserAuthenticationState<ResponseModel>> subscribefordata ()
     {
         return  modelMutableLiveData ;
 
@@ -74,10 +74,20 @@ public class HomeActivityViewModel extends ViewModel {
 
     }
 
-    public void getAnswer()
+    public void getAnswer(int page , int pageSize , String site)
     {
         modelMutableLiveData.postValue(UserAuthenticationState.loading(null));
-        
+        mUserAuthenticationRepository.getUserAnswer(new Callback<ResponseModel>() {
+            @Override
+            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                modelMutableLiveData.postValue(UserAuthenticationState.success(response.body()));
+            }
+
+            @Override
+            public void onFailure(Call<ResponseModel> call, Throwable t) {
+
+            }
+        },page,pageSize,site);
 
     }
 

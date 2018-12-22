@@ -11,7 +11,9 @@
         <variable
             name="registration"
             type="com.example.root.testapplicationo.databindingtest.RegistrationModel" />
-
+        <variable
+            name="view"
+            type="com.example.root.testapplicationo.databindingtest.DataBindTestActivity"/>
     </data>
 
     <LinearLayout
@@ -40,6 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:text="test one"
+
 
             />
         <Button

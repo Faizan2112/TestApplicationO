@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:shimmer="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:orientation="vertical"
+    >
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/margin_xxlarge" />
+    <TextView
+        android:id="@+id/home_item_picker_rv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:text="Stoneware + Porcelain Plate" />
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="16dp" />
+
+
+    <com.emavens.freshup.views.discreatescrollview.DiscreteScrollView
+        android:id="@+id/home_item_picker_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="200dp"
+
+
+        />
+
+
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="4dp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        >
+        <android.support.v4.widget.Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".53"
+            />
+        <TextView
+
+            android:id="@+id/home_item_picker_rv_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold"
+            android:textSize="@dimen/t16_size"
+            tools:text="$24.00 USD"
+            android:padding="@dimen/margin_small"
+            android:gravity="center"
+            android:text="See Details"
+
+            />
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmer_view_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+
+            android:orientation="vertical"
+            >
+
+            <ImageView
+                android:id="@+id/home_detail_view_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/home_item_picker_rv_description"
+                    />
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="10dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000"
+        >
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/home_grid_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </android.support.v7.widget.RecyclerView>
+
+
+
+    </LinearLayout>
+</LinearLayout>

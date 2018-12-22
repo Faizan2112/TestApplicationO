@@ -14,9 +14,26 @@ import com.bumptech.glide.Glide;
 import com.example.root.testapplicationo.R;
 import com.example.root.testapplicationo.horizontal_recycler_view.sample_directory.shop.Item;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ItemAdapter  extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder> {
 
     private Context mCtx;
+    private List<ResponseModel.Item> items ;
+
+    public ItemAdapter(Context mCtx, List<ResponseModel.Item> items) {
+        this.mCtx = mCtx;
+        this.items = items;
+    }
+
+
+    public void setAdapterItem(List<ResponseModel.Item> item )
+    {
+        items.addAll(item);
+        notifyDataSetChanged();
+
+    }
 
     @Override
     public ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -26,19 +43,22 @@ public class ItemAdapter  extends RecyclerView.Adapter<ItemAdapter.ItemViewHolde
 
     @Override
     public void onBindViewHolder(ItemViewHolder holder, int position) {
-      //  holder.textView.setText(item.owner.display_name);
+      ResponseModel.Item pos = items.get(position) ;
+
+          holder.textView.setText(String.valueOf(pos.getLastActivityDate()));
+          //holder.textView.setText(String.valueOf(position));
         //Glide.with(mCtx)
         //        .load(item.owner.profile_image)
         //        .into(holder.imageView);
 
-        Toast.makeText(mCtx, "Item is null", Toast.LENGTH_LONG).show();
+       // Toast.makeText(mCtx, "Item is null", Toast.LENGTH_LONG).show();
 
 
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return items.size();
     }
 
     public class ItemViewHolder extends RecyclerView.ViewHolder {

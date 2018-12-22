@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context=".constrain_layout.ConstrainActivity">
+
+    <android.support.constraint.Guideline
+        android:id="@+id/startVertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".1" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/endVertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".9" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/horizontal_text_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".1" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/horizontal_text_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bottom_line"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".4" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/startVertical"
+        app:layout_constraintTop_toTopOf="@+id/horizontal_text_start"
+        app:srcCompat="@android:drawable/btn_dialog" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toStartOf="@+id/startVertical"
+        app:layout_constraintTop_toTopOf="@+id/horizontal_text_end"
+        app:srcCompat="@android:drawable/btn_dialog" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="#000000"
+        app:layout_constraintEnd_toStartOf="@+id/endVertical"
+        app:layout_constraintStart_toStartOf="@+id/startVertical"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:singleLine="true"
+        android:text="TextViewgsdgfdgfdgfdggdfgdfgdfgdfgfdgdggfdggfdgdfgfdgdfgdfgdfgfdgfdgdfgdfgdfgdfg"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintStart_toStartOf="@+id/startVertical"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.41000003"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/t10_size"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/horizontal_text_end"
+        app:layout_constraintStart_toStartOf="@+id/startVertical"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintEnd_toStartOf="@+id/endVertical"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="@+id/horizontal_text_end" />
+
+</android.support.constraint.ConstraintLayout>

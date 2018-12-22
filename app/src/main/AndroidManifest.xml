@@ -61,15 +61,33 @@
         <activity android:name=".spinner_lib.FloatTextSpinner" />
         <activity android:name=".expand.ExpandActivity" />
         <activity android:name=".expandablelistview.ExpandableActivity" />
-        <activity android:name=".aadatatester.DataTesterActivity" />
-        <activity android:name=".fabmenu.FabTestActivity">
+        <activity android:name=".aadatatester.DataTesterActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".infiniterecyclerview.InfiniteRecyclerView"></activity>
+        <activity android:name=".crouselview.sample.screens.MainActivity" />
+        <activity android:name=".coverflow.it.moondroid.coverflow.components.coverflowdemo.CoverFlowActivity" />
+        <activity android:name=".fabmenu.FabTestActivity" />
+        <activity android:name=".infiniterecyclerview.InfiniteRecyclerView" />
+        <activity android:name=".differentscreensize.ScreenResoolutionActivity" />
+        <activity android:name=".fileProviderExample.FileProviderActivity" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <activity android:name=".testcoverflow.TestCoverFlowActivity" />
+        <activity android:name=".constrain_layout.ConstrainActivity" />
+        <activity android:name=".roomlibrary.RomActivity"></activity>
     </application>
 
 </manifest>

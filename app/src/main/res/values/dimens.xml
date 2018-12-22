@@ -109,4 +109,9 @@
     <dimen name="menu_text_size_horizontal">12sp</dimen>
     <dimen name="menu_text_size_horizontal_small">10sp</dimen>
     <dimen name="menu_text_padding">12dp</dimen>
+    <dimen name="t16_size">16sp</dimen>
+
+    <dimen name="cover_width">120dp</dimen>
+    <dimen name="cover_height">180dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
 </resources>
